@@ -4,16 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
       html {
         touch-action: pan-x pan-y;
         -ms-touch-action: pan-x pan-y;
       }
       body {
         touch-action: pan-x pan-y;
-        overflow: hidden;
         position: fixed;
-        width: 100%;
-        height: 100%;
       }
     </style>
     <title>Turtle Data Portal</title>

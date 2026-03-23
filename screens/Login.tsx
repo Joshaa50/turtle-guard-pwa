@@ -199,7 +199,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   };
 
   return (
-    <div ref={scrollContainerRef} className="dark h-[100dvh] w-full overflow-y-auto font-sans bg-background-dark relative">
+    <div ref={scrollContainerRef} className="dark h-full w-full overflow-y-auto font-sans bg-background-dark relative">
       {/* Background Image Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-overlay dark:bg-overlay z-10"></div>

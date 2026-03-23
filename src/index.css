@@ -17,6 +17,10 @@
 @layer base {
   body {
     @apply font-sans bg-background-light text-slate-900 dark:bg-background-dark dark:text-slate-100 m-0 antialiased;
+  }
+
+  #root {
+    @apply h-full w-full;
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
     padding-left: env(safe-area-inset-left);
