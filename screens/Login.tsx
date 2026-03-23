@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { DatabaseConnection } from '../services/Database';
 import { 
   Egg, 
@@ -36,6 +36,13 @@ type AuthMode = 'SIGN_IN' | 'SIGN_UP' | 'PENDING' | 'FORGOT_PASSWORD' | 'REQUEST
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [mode, setMode] = useState<AuthMode>('SIGN_IN');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [mode]);
   
   // Login State
   const [email, setEmail] = useState('');
@@ -192,9 +199,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="dark min-h-screen flex items-center justify-center relative overflow-hidden font-sans bg-background-dark">
+    <div ref={scrollContainerRef} className="dark h-[100dvh] w-full overflow-y-auto font-sans bg-background-dark relative">
       {/* Background Image Layer */}
-      <div className="absolute inset-0 z-0">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-overlay dark:bg-overlay z-10"></div>
         <img 
           className="w-full h-full object-cover blur-[2px]" 
@@ -203,8 +210,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         />
       </div>
 
-      <div className="relative z-20 w-full max-w-[520px] px-6 py-12">
-        <div className="glass-panel p-8 rounded-xl shadow-2xl flex flex-col items-center border border-white/10 transition-all duration-500 bg-slate-950/90 backdrop-blur-md">
+      <div className="relative z-20 w-full min-h-full flex flex-col items-center justify-center px-6 py-12 mx-auto max-w-[520px]">
+        <div className="w-full glass-panel p-8 rounded-xl shadow-2xl flex flex-col items-center border border-white/10 transition-all duration-500 bg-slate-950/90 backdrop-blur-md">
           
             <div className="mb-8 flex flex-col items-center text-center">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(19,127,236,0.3)]">
